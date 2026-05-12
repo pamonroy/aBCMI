@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Mar 11 01:27:58 2026
+Created on Fri May 12 01:23:48 2023
 
 @author: Pablo Andrés Monroy D'Croz
 
@@ -15,7 +15,7 @@ use. It is not intended for clinical or diagnostic applications.
 ================================================================================
 MIT LICENSE
 ================================================================================
-Copyright (c) 2026 Pablo Andrés Monroy D'Croz
+Copyright (c) 2023-2026 Pablo Andrés Monroy D'Croz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -187,7 +187,7 @@ AF8 = deque([], buffersize)  # Right prefrontal channel
 event = Event()
 is_memorizing = Event()
 is_online = Event()
-bitalino_connected = True
+bitalino_connected = False
 
 # LSL outlets (initialized later)
 outletMarkers = None
@@ -820,15 +820,29 @@ if __name__ == "__main__":
     sendMarker("pause")
     
     # Pseudorandomize calibration sequence
-    class_sequence = ['sad', 'happy', 'neutral']*4
+    max_attempts = 10
+    class_sequence = ['sad', 'happy', 'neutral'] * 4
     shuffled_sequence = []
-    idx = rn.randint(0, len(class_sequence) - 1)
-    shuffled_sequence.append(class_sequence.pop(idx))
+    n = rn.randint(0, len(class_sequence) - 1)
+    shuffled_sequence.append(class_sequence.pop(n))
+    attempts = 0
     
     while class_sequence:
-        idx = rn.randint(0, len(class_sequence) - 1)
-        if shuffled_sequence[-1] != class_sequence[idx]:
-            shuffled_sequence.append(class_sequence.pop(idx))
+        n = rn.randint(0, len(class_sequence) - 1)
+    
+        if shuffled_sequence[-1] != class_sequence[n]:
+            shuffled_sequence.append(class_sequence.pop(n))
+            attempts = 0
+        else:
+            attempts += 1
+            if attempts >= max_attempts:
+                # Reset if too many attempts
+                class_sequence = ['sad', 'happy', 'neutral'] * 4
+                shuffled_sequence = []
+                n = rn.randint(0, len(class_sequence) - 1)
+                shuffled_sequence.append(class_sequence.pop(n))
+                attempts = 0
+            continue
     
     # Collect training data
     df = pd.DataFrame()
