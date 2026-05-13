@@ -177,3 +177,322 @@ The complete datasets are publicly available at:
 - **TensorFlow Compatibility:**
   - On macOS, use `tensorflow-macos`
   - On Linux/Windows, use `tensorflow==2.9.2`
+
+# Installation
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/pamonroy/aBCMI.git
+cd aBCMI
+```
+
+## Create a Virtual Environment (Recommended)
+
+```bash
+python3.10 -m venv eeg_env
+source eeg_env/bin/activate
+```
+
+On Windows:
+
+```bash
+eeg_env\Scripts\activate
+```
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Verify Installation
+
+```bash
+python -c "import numpy, pandas, mido, sklearn, pynput, pyxdf, bitalino, pylsl, tensorflow; print('All dependencies installed successfully!')"
+```
+
+## Configure Working Directory
+
+- Update the `os.chdir()` path in each script to point to your project directory.
+- Ensure the BITalino MAC address is correct in the connection code.
+
+---
+
+# Experimental Methods
+
+## Method 1: AFAH (Asymmetric Frontal Activity Hypothesis)
+
+**File:** `afah.py`
+
+Real-time affective music generation based on EEG frontal asymmetry without machine learning. The system estimates emotional dimensions directly from EEG power spectra.
+
+### Key Features
+
+- Real-time valence and arousal estimation
+- No training required (works immediately)
+- Normalization with baseline recording
+- Smoothed valence (10-second moving average)
+
+### Emotion Metrics
+
+```text
+Valence = (AF8_alpha / AF8_beta) - (AF7_alpha / AF7_beta)
+
+Arousal = (AF7_beta + AF8_beta) / (AF7_alpha + AF8_alpha)
+```
+
+### Protocol
+
+- 15 seconds baseline (eyes closed)
+- 20 trials:
+  - 10 happy
+  - 10 sad
+  - randomized order
+- 30 seconds music per trial
+
+### Dataset
+
+- 23 participants
+- 14-minute recordings
+- EEG sampled at 1000 Hz
+
+### Usage
+
+```bash
+python afah.py
+```
+
+---
+
+## Method 2: MLP (Multi-Layer Perceptron)
+
+**File:** `mlp.py`
+
+EEG-based emotion classification using a Multi-Layer Perceptron neural network trained on power spectral features.
+
+### Key Features
+
+- 10 power spectral features:
+  - theta
+  - alpha
+  - low beta
+  - high beta
+  - gamma
+  - extracted from AF7 and AF8
+- MLP classifier with `30-30` hidden layers
+- Calibration phase with:
+  - idle
+  - sad
+  - happy
+  - neutral
+- Online real-time classification
+
+### Calibration Protocol
+
+- 6 trials:
+  - sad
+  - happy
+  - neutral
+  - counterbalanced order
+- Each trial:
+  - 10s silence
+  - 20s music
+- Feature extraction and model training
+
+### Online Protocol
+
+- 12 trials:
+  - 6 happy
+  - 6 sad
+  - randomized order
+- Real-time classification and adaptive music
+
+### Dataset
+
+- 23 participants
+- 20-minute recordings
+- EEG sampled at 1000 Hz
+
+### Usage
+
+```bash
+python mlp.py
+```
+
+---
+
+## Method 3: LDA (Linear Discriminant Analysis)
+
+**File:** `lda.py`
+
+2×2 factorial design experiment using Linear Discriminant Analysis for emotion classification with music/no-music conditions.
+
+### Key Features
+
+- 2×2 factorial design:
+  - sad/happy
+  - music/no-music
+- LDA classifier with 10 spectral features
+- 3-minute meditation phase
+- Self-report after each trial (1–9 scale)
+- 4-second and 10-second emotion smoothing buffers
+
+### Experimental Design
+
+#### Independent Variables
+
+- Emotion:
+  - sad
+  - happy
+- Auditory condition:
+  - music
+  - no-music
+
+#### Dependent Variables
+
+- EEG features
+- Self-report ratings
+- Classifier accuracy
+
+### Protocol
+
+- 3 minutes meditation (baseline)
+- 6 calibration trials:
+  - sad
+  - happy
+  - neutral
+- 20 online trials:
+  - 5 per condition
+  - randomized
+- 40-second trials with self-report after each
+
+### Dataset
+
+- 33 participants
+- 30-minute recordings
+- EEG sampled at 1000 Hz
+
+### Usage
+
+```bash
+python lda.py
+```
+
+---
+
+## Method 4: EEGNet Deep Learning
+
+### Files
+
+- `eegnet.py` — Main experiment script
+- `eegnet_train.ipynb` — Model training notebook
+
+End-to-end deep learning using EEGNet architecture with LSTM for raw EEG classification.
+
+### Key Features
+
+- Raw EEG signal processing (no hand-crafted features)
+- EEGNet architecture with convolutional and LSTM layers
+- 10-second windows
+- 100 Hz sampling rate
+- Binary classification:
+  - sad
+  - happy
+- GPU-accelerated training via Jupyter notebook
+
+### Model Architecture
+
+```text
+Input (2 channels × 1000 timesteps)
+→ Conv2D (8 filters, 1×50)
+→ DepthwiseConv2D (depth multiplier 4)
+→ SeparableConv2D (16 filters)
+→ LSTM (16 units)
+→ Dense (2 units)
+→ Output (1 unit, sigmoid)
+```
+
+### Protocol
+
+- 3 minutes meditation (baseline)
+- 12 calibration trials:
+  - sad
+  - happy
+  - neutral
+- 24 online trials:
+  - 6 per condition
+  - 2×2 design
+- 30-second trials with self-report after each
+
+### Dataset
+
+- 26 participants
+- 30-minute recordings
+- EEG sampled at 100 Hz
+- 6 synchronized data streams
+
+### Training
+
+```bash
+# First run the experiment to collect data, then train the model:
+ipython eegnet_train.ipynb <participant_code>
+
+# Or run the complete experiment (trains automatically):
+python eegnet.py
+```
+
+---
+
+# Common Protocol
+
+All four methods share a common experimental structure.
+
+## Phase 1: Setup
+
+- Participant code entry
+- LSL outlet initialization
+- EEG hardware connection check
+
+## Phase 2: Volume Setting (Optional)
+
+- Alternating sad/happy music
+- Comfortable listening level adjustment
+- 60-second routine
+
+## Phase 3: Meditation / Baseline (Methods 3 & 4 Only)
+
+- 3-minute eyes-closed rest period
+- Baseline physiological state acquisition
+
+## Phase 4: Calibration
+
+- 10 seconds silence (idle baseline)
+- 20 seconds fixed music:
+  - sad
+  - happy
+  - neutral
+- Counterbalanced order
+- Self-report collection (Methods 3 & 4)
+
+## Phase 5: Model Training (Methods 2–4)
+
+- Feature extraction and preprocessing
+- Model training:
+  - MLP
+  - LDA
+  - EEGNet
+- Model serialization for online use
+
+## Phase 6: Online Phase
+
+- Real-time emotion prediction
+- Adaptive music generation
+- Randomized trial order
+- No consecutive duplicates
+- Self-report after each trial
+
+## Phase 7: Debriefing
+
+- Experiment completion signals
+- Data saving and cleanup
