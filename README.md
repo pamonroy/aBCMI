@@ -1,9 +1,14 @@
-# aBCMI
-Affective Brain Computer Musical Interface
+# aBCMI: Affective Brain-Computer Musical Interface
 
-# EEG-Based Affective Music Generation
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
 Real-time affective Brain-Computer Musical Interface (BCMI) systems that generate adaptive music based on EEG frontal asymmetry (AF7/AF8 electrodes). This repository contains four complete experimental frameworks for investigating emotion recognition from EEG signals and generating music in real-time.
+
+**This repository is a direct contribution supporting the doctoral thesis:**  
+*"EEG-Driven Brain–Computer Musical Interfaces for Emotion Self-Induction: A Comparative Study of Deterministic and Machine Learning Approaches"*
+
+**Repository URL:** [https://github.com/pamonroy/aBCMI/](https://github.com/pamonroy/aBCMI/)
 
 ## Overview
 
@@ -26,10 +31,19 @@ Each implementation provides a complete experimental pipeline including real-tim
 If you use this software in your research, please cite:
 
 ```bibtex
-@software{Monroy_EEG_Affective_Music_2026,
+@phdthesis{Monroy_2026_BCMI,
   author = {Pablo Andrés Monroy D'Croz},
-  title = {EEG-Based Affective Music Generation},
+  title = {EEG-Driven Brain–Computer Musical Interfaces for Emotion Self-Induction: A Comparative Study of Deterministic and Machine Learning Approaches},
   year = {2026},
-  institution = {Universitat Pompeu Fabra and Universidad Icesi},
-  url = {https://github.com/[your-repo-url]}
+  school = {Universitat Pompeu Fabra},
+  address = {Barcelona, Spain},
+  note = {Repository: https://github.com/pamonroy/aBCMI/}
+}
+
+@software{Monroy_aBCMI_2026,
+  author = {Pablo Andrés Monroy D'Croz},
+  title = {aBCMI: Affective Brain-Computer Musical Interface},
+  year = {2026},
+  url = {https://github.com/pamonroy/aBCMI/},
+  doi = {[Add DOI if available]}
 }
