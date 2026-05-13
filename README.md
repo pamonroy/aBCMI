@@ -47,3 +47,24 @@ If you use this software in your research, please cite:
   url = {https://github.com/pamonroy/aBCMI/},
   doi = {[Add DOI if available]}
 }
+
+# Table of Contents
+
+- [Features](#features)
+- [Hardware Requirements](#hardware-requirements)
+- [Software Dependencies](#software-dependencies)
+- [Installation](#installation)
+- [Experimental Methods](#experimental-methods)
+  - [Method 1: AFAH (Asymmetric Frontal Activity Hypothesis)](#method-1-afah-asymmetric-frontal-activity-hypothesis)
+  - [Method 2: MLP (Multi-Layer Perceptron)](#method-2-mlp-multi-layer-perceptron)
+  - [Method 3: LDA (Linear Discriminant Analysis)](#method-3-lda-linear-discriminant-analysis)
+  - [Method 4: EEGNet Deep Learning](#method-4-eegnet-deep-learning)
+- [Common Protocol](#common-protocol)
+- [File Outputs](#file-outputs)
+- [MIDI Configuration](#midi-configuration)
+- [Thesis Context](#thesis-context)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+- [References](#references)
+- [Contact](#contact)
