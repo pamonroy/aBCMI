@@ -245,17 +245,8 @@ Arousal = (AF7_beta + AF8_beta) / (AF7_alpha + AF8_alpha)
 ### Protocol
 
 - 15 seconds baseline (eyes closed)
-- 20 trials:
-  - 10 happy
-  - 10 sad
-  - randomized order
+- 20 trials: 10 happy + 10 sad (semi-randomized order)
 - 30 seconds music per trial
-
-### Dataset
-
-- 23 participants
-- 14-minute recordings
-- EEG sampled at 1000 Hz
 
 ### Usage
 
@@ -273,46 +264,21 @@ EEG-based emotion classification using a Multi-Layer Perceptron neural network t
 
 ### Key Features
 
-- 10 power spectral features:
-  - theta
-  - alpha
-  - low beta
-  - high beta
-  - gamma
-  - extracted from AF7 and AF8
+- 10 power spectral features (theta, alpha, low beta, high beta, gamma) extracted from AF7 and AF8
 - MLP classifier with `30-30` hidden layers
-- Calibration phase with:
-  - idle
-  - sad
-  - happy
-  - neutral
+- Calibration phase with 3 conditions (sad, happy, neutral)
 - Online real-time classification
 
 ### Calibration Protocol
 
-- 6 trials:
-  - sad
-  - happy
-  - neutral
-  - counterbalanced order
-- Each trial:
-  - 10s silence
-  - 20s music
+- 6 trials: sad, happy, neutral (counterbalanced order)
+- Each trial: 10s silence + 20s music
 - Feature extraction and model training
 
 ### Online Protocol
 
-- 12 trials:
-  - 6 happy
-  - 6 sad
-  - randomized order
+- 12 trials: 6 happy + 6 sad (randomized order)
 - Real-time classification and adaptive music
-
-### Dataset
-
-- 23 participants
-- 20-minute recordings
-- EEG sampled at 1000 Hz
 
 ### Usage
 
@@ -330,48 +296,21 @@ python mlp.py
 
 ### Key Features
 
-- 2×2 factorial design:
-  - sad/happy
-  - music/no-music
+- 2×2 factorial design (sad/happy × music/no-music)
 - LDA classifier with 10 spectral features
 - 3-minute meditation phase
 - Self-report after each trial (1–9 scale)
 - 4-second and 10-second emotion smoothing buffers
 
 ### Experimental Design
-
-#### Independent Variables
-
-- Emotion:
-  - sad
-  - happy
-- Auditory condition:
-  - music
-  - no-music
-
-#### Dependent Variables
-
-- EEG features
-- Self-report ratings
-- Classifier accuracy
+- Independent variables: Emotion (sad/happy) × Auditory Condition (music/no-music)
+- Dependent variables: EEG features, self-report ratings, classifier accuracy
 
 ### Protocol
-
 - 3 minutes meditation (baseline)
-- 6 calibration trials:
-  - sad
-  - happy
-  - neutral
-- 20 online trials:
-  - 5 per condition
-  - randomized
+- 6 calibration trials (sad, happy, neutral)
+- 20 online trials (5 per condition, randomized)
 - 40-second trials with self-report after each
-
-### Dataset
-
-- 33 participants
-- 30-minute recordings
-- EEG sampled at 1000 Hz
 
 ### Usage
 
@@ -394,12 +333,8 @@ End-to-end deep learning using EEGNet architecture with LSTM for raw EEG classif
 
 - Raw EEG signal processing (no hand-crafted features)
 - EEGNet architecture with convolutional and LSTM layers
-- 10-second windows
-- 100 Hz sampling rate
-- Binary classification:
-  - sad
-  - happy
-- GPU-accelerated training via Jupyter notebook
+- 10-second windows, 100 Hz sampling rate
+- Binary classification: sad vs. happy
 
 ### Model Architecture
 
@@ -416,29 +351,13 @@ Input (2 channels × 1000 timesteps)
 ### Protocol
 
 - 3 minutes meditation (baseline)
-- 12 calibration trials:
-  - sad
-  - happy
-  - neutral
-- 24 online trials:
-  - 6 per condition
-  - 2×2 design
+- 12 calibration trials (sad, happy, neutral)
+- 24 online trials (6 per condition in 2×2 design)
 - 30-second trials with self-report after each
 
-### Dataset
-
-- 26 participants
-- 30-minute recordings
-- EEG sampled at 100 Hz
-- 6 synchronized data streams
-
-### Training
+### Usage
 
 ```bash
-# First run the experiment to collect data, then train the model:
-ipython eegnet_train.ipynb <participant_code>
-
-# Or run the complete experiment (trains automatically):
 python eegnet.py
 ```
 
@@ -458,7 +377,6 @@ All four methods share a common experimental structure.
 
 - Alternating sad/happy music
 - Comfortable listening level adjustment
-- 60-second routine
 
 ## Phase 3: Meditation / Baseline (Methods 3 & 4 Only)
 
@@ -468,28 +386,21 @@ All four methods share a common experimental structure.
 ## Phase 4: Calibration
 
 - 10 seconds silence (idle baseline)
-- 20 seconds fixed music:
-  - sad
-  - happy
-  - neutral
+- 20 seconds fixed music (sad/happy/neutral)
 - Counterbalanced order
 - Self-report collection (Methods 3 & 4)
 
 ## Phase 5: Model Training (Methods 2–4)
 
 - Feature extraction and preprocessing
-- Model training:
-  - MLP
-  - LDA
-  - EEGNet
+- Model training (MLP, LDA, or EEGNet)
 - Model serialization for online use
 
 ## Phase 6: Online Phase
 
 - Real-time emotion prediction
 - Adaptive music generation
-- Randomized trial order
-- No consecutive duplicates
+- Randomized trial order (no consecutive duplicates)
 - Self-report after each trial
 
 ## Phase 7: Debriefing
