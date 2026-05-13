@@ -1,0 +1,11 @@
+numpy==1.23.2
+pandas==2.2.2
+mido==1.2.10
+scikit-learn==1.5.1
+pynput==1.7.7
+pyxdf==1.16.3
+bitalino==1.2.6
+pylsl==1.15.0
+tensorflow-macos==2.9.2  # Use tensorflow==2.9.2 for Linux/Windows
+matplotlib==3.4.3
+scipy==1.7.3
