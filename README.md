@@ -68,3 +68,32 @@ If you use this software in your research, please cite:
 - [Acknowledgments](#acknowledgments)
 - [References](#references)
 - [Contact](#contact)
+
+# Features
+
+- Real-time EEG acquisition from BITalino device (AF7, AF8 electrodes)
+- Multiple classification approaches:
+  - AFAH (Asymmetric Frontal Activity Hypothesis)
+  - MLP (Multi-Layer Perceptron)
+  - LDA (Linear Discriminant Analysis)
+  - EEGNet Deep Learning
+- Offline simulation using pre-recorded XDF files
+- Lab Streaming Layer (LSL) integration for data synchronization
+- Adaptive MIDI music generation with emotion-controlled parameters:
+  - Musical mode (7 Greek modes from Lydian to Locrian)
+  - Tempo and rhythm density (controlled by arousal)
+  - Loudness and brightness (controlled by emotional intensity)
+  - Harmonic progression (I-IV-V-I pattern)
+- 2×2 factorial design (sad/happy × music/no-music) for LDA and EEGNet
+- Self-report mechanism (1–9 scale) for emotional state validation
+- Comprehensive data logging for offline analysis
+
+# Hardware Requirements
+
+- BITalino (r)evolution with EEG sensor kit
+- Electrodes:
+  - AF7 (left prefrontal)
+  - AF8 (right prefrontal)
+- MIDI synthesizer or DAW (e.g., Ableton Live) for audio output
+- Computer with Bluetooth capability for BITalino connection
+- Keyboard for self-report responses (keys 1–9)
