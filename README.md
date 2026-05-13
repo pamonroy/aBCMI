@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10.9](https://img.shields.io/badge/python-3.10.9-blue.svg)](https://www.python.org/downloads/release/python-3109/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19059357.svg)](https://doi.org/10.5281/zenodo.19059357)
 
 Real-time affective Brain-Computer Musical Interface (BCMI) systems that generate adaptive music based on EEG frontal asymmetry (AF7/AF8 electrodes). This repository contains four complete experimental frameworks for investigating emotion recognition from EEG signals and generating music in real-time.
 
@@ -9,6 +10,86 @@ Real-time affective Brain-Computer Musical Interface (BCMI) systems that generat
 *"EEG-Driven Brain–Computer Musical Interfaces for Emotion Self-Induction: A Comparative Study of Deterministic and Machine Learning Approaches"*
 
 **Repository URL:** [https://github.com/pamonroy/aBCMI/](https://github.com/pamonroy/aBCMI/)
+
+## Public Datasets
+
+This thesis contributes **four publicly available datasets** collected from **82 participants** across sequential BCMI experiments, totaling more than **50 hours of synchronized recordings**. All datasets are available on Zenodo:
+
+[![Zenodo Dataset](https://img.shields.io/badge/Zenodo-10.5281/zenodo.19059357-blue.svg)](https://zenodo.org/records/19059357)
+
+### Dataset Overview
+
+| Dataset | Paradigm | Participants | Duration (approx.) | EEG Sampling Rate | Key Features |
+|---------|----------|--------------|-------------------|-------------------|--------------|
+| **AFAH** | Asymmetric Frontal Activity Hypothesis | 23 | 14 min | 1000 Hz | Dual-channel EEG, valence-arousal predictions |
+| **MLP** | Multi-Layer Perceptron | 23 | 20 min | 1000 Hz | Labeled training data, trained models |
+| **EEGNet** | Deep Learning | 26 | 30 min | 100 Hz | 6 synchronized streams, real-time predictions, self-reports |
+| **LDA** | Linear Discriminant Analysis | 33 | 30 min | 1000 Hz | Structured similar to EEGNet with higher sampling rate |
+| **TOTAL** | **All Paradigms** | **82** | **50+ hours** | **100-1000 Hz** | **Synchronized recordings + questionnaires** |
+
+### Detailed Dataset Descriptions
+
+#### AFAH Dataset (23 participants, 14 min)
+- **Paradigm**: Asymmetric Frontal Activity Hypothesis (deterministic approach)
+- **EEG**: Dual-channel (AF7, AF8) recorded at 1000 Hz
+- **Content**: Real-time valence and arousal predictions without machine learning
+- **Purpose**: Baseline comparison for machine learning approaches
+
+#### MLP Dataset (23 participants, 20 min)
+- **Paradigm**: Multi-Layer Perceptron neural network
+- **EEG**: Dual-channel (AF7, AF8) recorded at 1000 Hz
+- **Content**: Labeled training data, trained MLP models, power spectral features
+- **Purpose**: Feature-based machine learning emotion classification
+
+#### EEGNet Dataset (26 participants, 30 min)
+- **Paradigm**: Deep Learning (EEGNet + LSTM)
+- **EEG**: Dual-channel (AF7, AF8) recorded at 100 Hz
+- **Streams**: Six synchronized data streams including:
+  - Raw EEG signals
+  - Real-time emotion predictions
+  - Subjective self-reports (1-9 scale)
+  - Experimental markers
+  - Harmony progression markers
+  - Model confidence scores
+- **Purpose**: End-to-end deep learning from raw EEG signals
+
+#### LDA Dataset (33 participants, 30 min)
+- **Paradigm**: Linear Discriminant Analysis (2×2 factorial design)
+- **EEG**: Dual-channel (AF7, AF8) recorded at 1000 Hz
+- **Content**: Similar structure to EEGNet dataset with higher sampling rate
+- **Features**: 10 power spectral features (theta, alpha, low/high beta, gamma)
+- **Purpose**: Statistical classification with music/no-music conditions
+
+### Included Materials
+Each dataset includes:
+- **Raw EEG recordings** (synchronized LSL streams)
+- **Experimental markers** for trial segmentation
+- **Pre- and post-experiment questionnaires**
+- **Trained models** (where applicable)
+- **Documentation** (data format specifications, experimental protocols)
+- **Code snippets** for data loading and analysis
+
+### Zenodo Access
+The complete datasets are publicly available at:
+**https://zenodo.org/records/19059357**
+
+Citation for datasets:
+```bibtex
+@data{Monroy_2026_Datasets,
+  author = {Pablo Andrés Monroy D'Croz},
+  title = {Datasets for the EEG-Driven Brain–Computer Musical Interfaces for Emotion Self-Induction Ph.D. Thesis},
+  publisher = {Zenodo},
+  year = {2026},
+  doi = {10.5281/zenodo.19059357},
+  url = {https://zenodo.org/records/19059357}
+}
+```
+These datasets provide a valuable resource for the research community to:
+- Benchmark emotion detection algorithms
+- Study brain–music interaction
+- Develop and validate new BCMI systems
+- Reproduce and extend the thesis results
+- Compare different emotion prediction paradigms
 
 ## Overview
 
