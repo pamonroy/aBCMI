@@ -1,7 +1,7 @@
 # aBCMI: Affective Brain-Computer Musical Interface
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10.9](https://img.shields.io/badge/python-3.10.9-blue.svg)](https://www.python.org/downloads/release/python-3109/)
 
 Real-time affective Brain-Computer Musical Interface (BCMI) systems that generate adaptive music based on EEG frontal asymmetry (AF7/AF8 electrodes). This repository contains four complete experimental frameworks for investigating emotion recognition from EEG signals and generating music in real-time.
 
@@ -26,6 +26,29 @@ Each implementation provides a complete experimental pipeline including real-tim
 - **Universitat Pompeu Fabra** (Barcelona, Spain)
 - **Universidad Icesi** (Cali, Colombia)
 
+## Technical Specifications
+
+### Software Environment
+- **Python Version**: 3.10.9
+- **LSL Recording Software**: Lab Recorder version 1.14.0
+- **Operating System**: macOS / Linux (compatible)
+
+### Dependencies
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| numpy | 1.23.2 | Numerical computations and array handling |
+| pandas | 2.2.2 | Data management and CSV export |
+| mido | 1.2.10 | MIDI communication for music generation |
+| scikit-learn | 1.5.1 | MLP and LDA classifiers, StandardScaler |
+| pynput | 1.7.7 | Keyboard input for self-report collection |
+| pyxdf | 1.16.3 | XDF file loading for offline simulation |
+| bitalino | 1.2.6 | BITalino hardware interface |
+| pylsl | 1.15.0 | Lab Streaming Layer synchronization |
+| tensorflow-macos | 2.9.2 | EEGNet deep learning framework (macOS) |
+
+**Note for Linux/Windows users**: Replace `tensorflow-macos` with `tensorflow` version 2.9.2 or higher.
+
 ## Citation
 
 If you use this software in your research, please cite:
@@ -45,6 +68,7 @@ If you use this software in your research, please cite:
   title = {aBCMI: Affective Brain-Computer Musical Interface},
   year = {2026},
   url = {https://github.com/pamonroy/aBCMI/},
+  version = {1.0},
   doi = {[Add DOI if available]}
 }
 ```
@@ -71,29 +95,53 @@ If you use this software in your research, please cite:
 
 # Features
 
-- Real-time EEG acquisition from BITalino device (AF7, AF8 electrodes)
-- Multiple classification approaches:
+- **Real-time EEG acquisition** from BITalino device (AF7, AF8 electrodes)
+- **Multiple classification approaches:**
   - AFAH (Asymmetric Frontal Activity Hypothesis)
   - MLP (Multi-Layer Perceptron)
   - LDA (Linear Discriminant Analysis)
   - EEGNet Deep Learning
-- Offline simulation using pre-recorded XDF files
-- Lab Streaming Layer (LSL) integration for data synchronization
-- Adaptive MIDI music generation with emotion-controlled parameters:
+- **Offline simulation** using pre-recorded XDF files
+- **Lab Streaming Layer (LSL)** integration for data synchronization
+- **Adaptive MIDI music generation** with emotion-controlled parameters:
   - Musical mode (7 Greek modes from Lydian to Locrian)
   - Tempo and rhythm density (controlled by arousal)
   - Loudness and brightness (controlled by emotional intensity)
   - Harmonic progression (I-IV-V-I pattern)
-- 2×2 factorial design (sad/happy × music/no-music) for LDA and EEGNet
-- Self-report mechanism (1–9 scale) for emotional state validation
-- Comprehensive data logging for offline analysis
+- **2×2 factorial design** (sad/happy × music/no-music) for LDA and EEGNet
+- **Self-report mechanism** (1–9 scale) for emotional state validation
+- **Comprehensive data logging** for offline analysis
 
 # Hardware Requirements
 
-- BITalino (r)evolution with EEG sensor kit
-- Electrodes:
-  - AF7 (left prefrontal)
-  - AF8 (right prefrontal)
-- MIDI synthesizer or DAW (e.g., Ableton Live) for audio output
-- Computer with Bluetooth capability for BITalino connection
-- Keyboard for self-report responses (keys 1–9)
+- **BITalino (r)evolution** with EEG sensor kit
+- **Electrodes**: AF7 (left prefrontal), AF8 (right prefrontal)
+- **Digital Audio Workstation** (e.g., Ableton Live) for audio output
+- **Computer** with Bluetooth capability for BITalino connection
+- **Keyboard** for self-report responses (keys 1–9)
+
+# Software Dependencies
+
+## Core Dependencies with Version Specifications
+
+| Package | Version | Purpose |
+|---|---|---|
+| `numpy` | `1.23.2` | Numerical computations and array handling |
+| `pandas` | `2.2.2` | Data management and CSV export |
+| `mido` | `1.2.10` | MIDI communication for music generation |
+| `scikit-learn` | `1.5.1` | MLP and LDA classifiers, `StandardScaler` |
+| `pynput` | `1.7.7` | Keyboard input for self-report collection |
+| `pyxdf` | `1.16.3` | XDF file loading for offline simulation |
+| `bitalino` | `1.2.6` | BITalino hardware interface |
+| `pylsl` | `1.15.0` | Lab Streaming Layer synchronization |
+| `tensorflow-macos` | `2.9.2` | EEGNet deep learning framework (macOS) |
+| `matplotlib` | `3.4.3` | Training curve visualization |
+| `scipy` | `1.7.3` | Signal processing (Welch's method) |
+
+## Important Notes
+
+- **LSL Recording:** Lab Recorder version `1.14.0` was used for recording all LSL streams.
+- **Python Version:** All code was developed and tested with Python `3.10.9`.
+- **TensorFlow Compatibility:**
+  - On macOS, use `tensorflow-macos`
+  - On Linux/Windows, use `tensorflow==2.9.2`
