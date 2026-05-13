@@ -47,7 +47,7 @@ If you use this software in your research, please cite:
   url = {https://github.com/pamonroy/aBCMI/},
   doi = {[Add DOI if available]}
 }
-
+```
 # Table of Contents
 
 - [Features](#features)
