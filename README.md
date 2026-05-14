@@ -118,6 +118,7 @@ The complete datasets are publicly available at:
 - [Common Protocol](#common-protocol)
 - [File Outputs](#file-outputs)
 - [MIDI Configuration](#midi-configuration)
+- [Lab Streaming Layer (LSL) Configuration](#lab-streaming-layer-lsl-configuration)
 - [Thesis Context](#thesis-context)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
@@ -450,8 +451,8 @@ All methods create the following LSL streams (recorded with Lab Recorder 1.14.0)
 
 - eeg-bitalino - Raw EEG data (2 channels, 1000Hz or 100Hz)
 - markers - Experiment markers (integers)
-- emotion - Predicted emotion values (float32)
-- predicted-emotion - Emotion vector (2-3 channels)
+- predicted-emotion - Predicted emotion values (2-3 channels, 2Hz)
+- emotion - Predicted emotion fed to the music generator at the start of each bar
 - self-report - Self-report ratings (EEGNet and LDA methods only)
 - harmony - Chord progression markers (LDA method only)
 
