@@ -484,7 +484,7 @@ Copyright (c) 2024–2026 Pablo Andrés Monroy D'Croz
 - Lawhern et al. (2018) for the EEGNet architecture
   - *EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces*
 - EEGNet implementation inspired by:
-  - `Pre-trained-EEG-for-Deep-Learning`
+  - [`Pre-trained-EEG-for-Deep-Learning`](https://github.com/IoBT-VISTEC/Pre-trained-EEG-for-Deep-Learning/blob/master/EEGModels.py)
 - BITalino for providing open-source biomedical hardware
 - The Lab Streaming Layer (LSL) community for synchronization tools and Lab Recorder `1.14.0`
 - Doctoral Committee:
