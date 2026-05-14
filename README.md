@@ -407,3 +407,69 @@ All four methods share a common experimental structure.
 
 - Experiment completion signals
 - Data saving and cleanup
+
+---
+
+# MIDI Configuration
+
+## Channel Mapping
+
+| Channel | Instrument | Purpose |
+|---|---|---|
+| `0` | Piano | Chord voicing (upper register) |
+| `1` | Cello | Chord voicing (middle register) |
+| `2` | Bass | Bass line |
+| `3` | Piano | Melodic patterns |
+| `5` | Control | MIDI CC messages (Auditory cues) |
+
+---
+
+## Control Change (CC) Messages
+
+| CC | Purpose | Value |
+|---|---|---|
+| `13` | Volume setting request | `127` |
+| `14` | Calibration start | `127` |
+| `15` | Online phase start | `127` |
+| `16` | Meditation start | `127` |
+| `17` | Experiment end | `127` |
+| `18` | Stop all | `127` |
+| `19` | Model training start | `127` |
+| `80–82` | Target emotion (`80=happy`, `81=neutral`, `82=sad`) | `127` |
+| `83` | Close eyes instruction | `127` |
+| `84` | Self-report request | `127` |
+| `85` | No-music condition | `127` |
+| `123` | All notes off | `0` |
+
+---
+
+# Lab Streaming Layer (LSL) Configuration
+
+## LSL Streams
+All methods create the following LSL streams (recorded with Lab Recorder 1.14.0):
+
+- eeg-bitalino - Raw EEG data (2 channels, 1000Hz or 100Hz)
+- markers - Experiment markers (integers)
+- emotion - Predicted emotion values (float32)
+- predicted-emotion - Emotion vector (2-3 channels)
+- self-report - Self-report ratings (EEGNet and LDA methods only)
+- harmony - Chord progression markers (LDA method only)
+
+## Marker Codes
+
+| Marker | Value | Description |
+|---|---|---|
+| `setVolume` | `6` | Volume setting phase |
+| `silence` | `0` | Silence period |
+| `neutral` | `2` | Neutral emotion |
+| `sad` | `1` | Sad emotion |
+| `happy` | `3` | Happy emotion |
+| `modeling` | `8` | Model training phase |
+| `online` | `7` | Online phase start |
+| `music` | `9` | Start music condition |
+| `min_power` | `-1` | Minimum power alarm |
+| `pause` | `10` | Pause between phases |
+| `askForReport` | `11` | Self-report request |
+| `stopMusic` | `12` | Stop music condition |
+| `startNoMusic` | `13` | Start no-music condition |
+| `stopNoMusic` | `14` | Stop no-music condition |
