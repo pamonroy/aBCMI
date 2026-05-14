@@ -116,11 +116,8 @@ The complete datasets are publicly available at:
   - [Method 3: LDA (Linear Discriminant Analysis)](#method-3-lda-linear-discriminant-analysis)
   - [Method 4: EEGNet Deep Learning](#method-4-eegnet-deep-learning)
 - [Common Protocol](#common-protocol)
-- [File Outputs](#file-outputs)
 - [MIDI Configuration](#midi-configuration)
 - [Lab Streaming Layer (LSL) Configuration](#lab-streaming-layer-lsl-configuration)
-- [Thesis Context](#thesis-context)
-- [Troubleshooting](#troubleshooting)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 - [References](#references)
@@ -423,8 +420,6 @@ All four methods share a common experimental structure.
 | `3` | Piano | Melodic patterns |
 | `5` | Control | MIDI CC messages (Auditory cues) |
 
----
-
 ## Control Change (CC) Messages
 
 | CC | Purpose | Value |
@@ -474,3 +469,57 @@ All methods create the following LSL streams (recorded with Lab Recorder 1.14.0)
 | `stopMusic` | `12` | Stop music condition |
 | `startNoMusic` | `13` | Start no-music condition |
 | `stopNoMusic` | `14` | Stop no-music condition |
+
+---
+# License
+
+This project is licensed under the **MIT License** — see the `LICENSE` file for details.
+
+Copyright (c) 2024–2026 Pablo Andrés Monroy D'Croz
+
+---
+
+# Acknowledgments
+
+- Lawhern et al. (2018) for the EEGNet architecture
+  - *EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces*
+- EEGNet implementation inspired by:
+  - `Pre-trained-EEG-for-Deep-Learning`
+- BITalino for providing open-source biomedical hardware
+- The Lab Streaming Layer (LSL) community for synchronization tools and Lab Recorder `1.14.0`
+- Doctoral Committee:
+  - Universitat Pompeu Fabra
+  - Universidad Icesi
+- Contributors:
+  - This research was supported by the doctoral programs at Universitat Pompeu Fabra and Universidad Icesi
+
+---
+
+# References
+
+1. Lawhern, V. J., Solon, A. J., Waytowich, N. R., Gordon, S. M., Hung, C. P., & Lance, B. J. (2018).  
+   *EEGNet: A compact convolutional neural network for EEG-based brain-computer interfaces.*  
+   Journal of Neural Engineering, 15(5), 056013.
+
+2. Davidson, R. J. (2004).  
+   *What does the prefrontal cortex "do" in affect: Perspectives on frontal EEG asymmetry research.*  
+   Biological Psychology, 67(1–2), 219–234.
+
+3. Schirrmeister, R. T., Springenberg, J. T., Fiederer, L. D. J., Glasstetter, M., Eggensperger, K., Tangermann, M., ... & Ball, T. (2017).  
+   *Deep learning with convolutional neural networks for EEG decoding and visualization.*  
+   Human Brain Mapping, 38(11), 5391–5420.
+
+---
+
+# Contact
+
+**Author:** Pablo Andrés Monroy D'Croz
+
+**Institutions:**
+- Universitat Pompeu Fabra (Barcelona, Spain)
+- Universidad Icesi (Cali, Colombia)
+
+**GitHub:** `pamonroy`
+
+**Repository:**  
+<https://github.com/pamonroy/aBCMI/>
